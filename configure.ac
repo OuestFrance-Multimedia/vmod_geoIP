@@ -1,9 +1,9 @@
 AC_PREREQ(2.59)
 AC_COPYRIGHT([Copyright (c) 2011-2015 Varnish Software AS])
-AC_INIT([libvmod-newrelic_x_request_start], [trunk])
+AC_INIT([libvmod-maxmind_geoIP], [trunk])
 AC_CONFIG_MACRO_DIR([m4])
 m4_ifndef([VARNISH_VMOD_INCLUDES], AC_MSG_ERROR([Need varnish.m4 -- see README.rst]))
-AC_CONFIG_SRCDIR(src/vmod_newrelic_x_request_start.vcc)
+AC_CONFIG_SRCDIR(src/vmod_maxmind_geoIP.vcc)
 AM_CONFIG_HEADER(config.h)
 
 AC_CANONICAL_SYSTEM

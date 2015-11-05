@@ -1,10 +1,10 @@
 Summary: Example VMOD for Varnish
-Name: vmod-newrelic_x_request_start
+Name: vmod-maxmind_geoIP
 Version: 0.1
 Release: 1%{?dist}
 License: BSD
 Group: System Environment/Daemons
-Source0: libvmod-newrelic_x_request_start.tar.gz
+Source0: libvmod-maxmind_geoIP.tar.gz
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 Requires: varnish >= 4.0.2
 BuildRequires: make
@@ -16,7 +16,7 @@ BuildRequires: varnish-libs-devel >= 4.0.2
 Example VMOD
 
 %prep
-%setup -n libvmod-newrelic_x_request_start-trunk
+%setup -n libvmod-maxmind_geoIP-trunk
 
 %build
 %configure --prefix=/usr/

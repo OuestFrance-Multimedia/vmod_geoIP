@@ -1,4 +1,4 @@
-# vmod_newrelic_x_request_start
+# vmod_maxmind_geoIP
 
 usage: ::
 

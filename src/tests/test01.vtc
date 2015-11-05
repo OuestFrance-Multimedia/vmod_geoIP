@@ -1,4 +1,4 @@
-varnishtest "Test newrelic_x_request_start vmod"
+varnishtest "Test maxmind_geoIP vmod"
 
 server s1 {
        rxreq
@@ -7,10 +7,10 @@ server s1 {
 } -start
 
 varnish v1 -vcl+backend {
-	import newrelic_x_request_start from "${vmod_topbuild}/src/.libs/libvmod_newrelic_x_request_start.so";
+	import maxmind_geoIP from "${vmod_topbuild}/src/.libs/libvmod_maxmind_geoIP.so";
 
 	sub vcl_recv {
-		newrelic_x_request_start.set_x_request_start();
+		maxmind_geoIP.set_x_request_start();
 	}
 
 } -start
