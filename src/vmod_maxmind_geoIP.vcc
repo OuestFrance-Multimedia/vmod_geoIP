@@ -21,7 +21,8 @@ You can even have links and lists in here:
 The init-function declared next does not have documentation.
 
 $Init init_function
-$Function VOID set_x_request_start()
+$Function VOID get_country_code()
+$Function VOID get_country_code_IP(IP)
 
 The different functions provided by the VMOD should also have their own
 embedded documentation. This section is for the hello() function.
