@@ -2,7 +2,7 @@ varnishtest "Test maxmind_geoIP vmod"
 
 server s1 {
        rxreq
-       expect req.http.X-Request-Start ~ "t=[0-9]+" 
+       expect req.http.X-COUNTRY-CODE ~ "[A-Z][A-Z]|Unknown"
        txresp
 } -start
 
@@ -10,7 +10,7 @@ varnish v1 -vcl+backend {
 	import maxmind_geoIP from "${vmod_topbuild}/src/.libs/libvmod_maxmind_geoIP.so";
 
 	sub vcl_recv {
-		maxmind_geoIP.set_x_request_start();
+          maxmind_geoIP.get_country_code();          
 	}
 
 } -start
