@@ -1,0 +1,25 @@
+varnishtest "Test maxmind_geoIP vmod"
+
+server s1 {
+       rxreq
+       expect req.http.X-COUNTRY-CODE == "US"
+       txresp
+} -start
+
+varnish v1 -vcl+backend {
+	import maxmind_geoIP from "${vmod_topbuild}/src/.libs/libvmod_maxmind_geoIP.so";
+        import std;
+
+	sub vcl_recv {
+          maxmind_geoIP.get_country_code_IP(std.ip("6.6.6.6", "0.0.0.0"));          
+	}
+
+} -start
+
+client c1 {
+	txreq -url "/"
+	rxresp
+}
+
+client c1 -run
+
