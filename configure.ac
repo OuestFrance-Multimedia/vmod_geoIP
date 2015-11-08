@@ -68,6 +68,24 @@ AC_PATH_PROG([VARNISHTEST], [varnishtest], [],
 AC_PATH_PROG([VARNISHD], [varnishd], [],
     [$LIBVARNISHAPI_SBINDIR:$LIBVARNISHAPI_BINDIR:$PATH])
 
+# Check for GeoIP
+AC_ARG_WITH([geoip],
+    [  --with-geoip=PATH       find the GeoIP SDK installed in PATH],
+    [
+        CPPFLAGS="$CPPFLAGS -I${withval}/include"
+        LDFLAGS="$LDFLAGS -L${withval}/lib"
+    ], 
+    [:]
+)
+AC_CHECK_LIB([GeoIP], [GeoIP_country_code_by_addr], 
+    [AC_CHECK_HEADER([GeoIP.h],
+        [],
+        [AC_MSG_ERROR([Failed to find the GeoIP SDK (1).  Specify --with-geoip=PATH])]
+    )],
+    [AC_MSG_ERROR([Failed to find the GeoIP SDK (2).  Specify --with-geoip=PATH])]
+)
+LIBS="$LIBS -lGeoIP"
+
 AC_CONFIG_FILES([
 	Makefile
 	src/Makefile
