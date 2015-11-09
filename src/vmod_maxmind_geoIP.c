@@ -1,17 +1,10 @@
 #define HOSTNAME_MAX_SIZE 200
-#include <stdio.h>
-#include <stdlib.h>
 
 #include "vrt.h"
 #include "vrt_obj.h"
-#include "cache/cache.h"
 
 #include "vcc_if.h"
 
-#include <string.h>
-#include <netdb.h>
-#include <sys/types.h>
-#include <sys/socket.h>
 #include <GeoIP.h>
 
 static GeoIP *gi = NULL;
